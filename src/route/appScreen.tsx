@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import AppPages from './appPages';
+import NavigationBar from '../components/molecules/navigationBar/navigationBar';
+import View from '../components/atoms/view';
 
 const RootView = styled.div`
-display: flex;
+flex-direction: column;
 `;
 
 interface IAppScreen {
@@ -13,6 +15,9 @@ interface IAppScreen {
 const AppScreen: React.FC<IAppScreen> = (props) => {
     return (
         <RootView>
+            {/* Header */}
+            <NavigationBar />
+
             {/* Pages */}
             <AppPages />
 
