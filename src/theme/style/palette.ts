@@ -22,27 +22,34 @@ export interface IRed {
     base: string;
 }
 
+export interface IOrange {
+    base: string;
+}
+
 export const white: IWhite = {
     base: '#ffffff',
 };
 
-// TODO : Need to setting base color
 export const black: IBlack = {
-    base: '#ffffff',
+    base: '#000000',
 };
 
 export const gray: IGray = {
-    base: '#ffffff',
+    base: '#a0a1a4',
 };
-
+// TODO : Need to setting base color
 export const yellow: IYellow = {
-    base: '#ffffff',
+    base: '#e5de00',
 };
 
 export const blue: IBlue = {
-    base: '#ffffff',
+    base: '#1167b1',
 };
 
 export const red: IRed = {
-    base: '#ffffff',
+    base: '#ec3735',
+};
+
+export const orange: IOrange = {
+    base: '#fe7f0c',
 };

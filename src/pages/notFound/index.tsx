@@ -1,8 +1,11 @@
 import React from 'react';
+import View from '../../components/atoms/view';
 
 const NotFound = () => {
     return (
-        <div>notFound page</div>
+        <View>
+            
+        </View>
     );
 };
 
