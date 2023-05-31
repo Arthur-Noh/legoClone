@@ -1,13 +1,16 @@
 import React from 'react';
 import Layout from '../../components/atoms/layout';
-import { useDispatch, useSelector } from 'react-redux';
-import { AddSubActionType, AddSubStateType } from '../../reducers/addsub';
-import { CountActionType, CountStateType } from '../../reducers/countReducer';
-import { RootState } from '../../reducers/rootReducer';
+import useCounter from '../../hooks/useCounter';
 
 const Develop = () => {
+    const { count, onIncrease, onDecrease, onIncreaseBy } = useCounter();
+
     return (
         <Layout>
+            <div>{count}</div>
+            <button onClick={onIncrease}>+ 1</button>
+            <button onClick={onDecrease}>- 1</button>
+            <button onClick={() => onIncreaseBy(5)}>+ 5</button>
         </Layout>
     );
 };

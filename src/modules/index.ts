@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux';
-import addSubReducer from './addsub';
-import countReducer from './countReducer';
+import counter from './counter';
 
 const rootReducer = combineReducers({
-    value: addSubReducer,
-    count: countReducer,
+    counter,
 });
 
 export default rootReducer;
-
 export type RootState = ReturnType<typeof rootReducer>;
