@@ -4,7 +4,7 @@ import View from '../../atoms/view';
 import BackgroundBlur from '../../atoms/backgroundBlur';
 import Logo from '../../../assets/common/logo.svg';
 import Close from '../../../assets/common/close.svg';
-import { NavigationButton } from './constants';
+import { NavigationMenu } from '../../../modules/navigationMenu';
 
 const ShowingAnimation = keyframes`
 0% {
@@ -69,7 +69,7 @@ height: 20px;
 
 interface INavigationDrawBar {
     visible?: boolean;
-    drawHeaderValue?: Array<NavigationButton>; // TODO : 넣어줄 리스트 형식으로 해야함
+    drawHeaderValue?: Array<NavigationMenu>; // TODO : 넣어줄 리스트 형식으로 해야함
     onClickClose?: () => void;
     onClickBlur?: () => void;
 }
