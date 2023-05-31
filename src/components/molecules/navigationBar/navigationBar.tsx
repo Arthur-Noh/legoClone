@@ -10,7 +10,7 @@ import NavigationDrawBar from './navigationDrawBar';
 const Layout = styled(View)`
 flex-direction: row;
 flex: 1;
-background-color: ${({ theme }) => theme.colors.yellow.base};
+background-color: ${({ theme }) => theme.colors.gray.base};
 align-items: center;
 justify-content: space-between;
 padding: ${({ theme }) => theme.base.templatePadding}px;
@@ -74,17 +74,15 @@ interface INavigationBar {
 }
 
 const NavigationBar: React.FC<INavigationBar> = (props) => {
-
     const [ showDraw, setShowDraw ] = useState<boolean>(false);
 
     return (
-        <>
         <Layout>
             <InnerLayout>
                 <LogoImage src={Logo} />
                 <DrawTitle onClick={() => {setShowDraw(prev => !prev)}}>레고 제품 쇼핑</DrawTitle>
-                <DrawTitle>레고 브랜드 소개</DrawTitle>
-                <DrawTitle>고객 지원</DrawTitle>
+                <DrawTitle onClick={() => {setShowDraw(prev => !prev)}}>레고 브랜드 소개</DrawTitle>
+                <DrawTitle onClick={() => {setShowDraw(prev => !prev)}}>고객 지원</DrawTitle>
             </InnerLayout>
             <InnerLayout>
                 <MagnifierWrapper>
@@ -93,9 +91,14 @@ const NavigationBar: React.FC<INavigationBar> = (props) => {
                 <HeartImage src={Heart}/>
                 <ShoppingBagImage src={ShoppingBag}/>
             </InnerLayout>
+            { showDraw && (
+                <NavigationDrawBar
+                    visible={showDraw}
+                    onClickBlur={() => setShowDraw(false)}
+                    onClickClose={() => setShowDraw(false)}
+                />
+            )}
         </Layout>
-        <NavigationDrawBar showDraw={showDraw}/>
-        </>
     );
 };
 
