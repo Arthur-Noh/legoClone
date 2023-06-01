@@ -69,6 +69,8 @@ height: 20px;
 }
 `;
 
+export type NavigatorType = 'Shopping' | 'Introduce' | 'Support' | 'None';
+
 interface INavigationBar {
 
 }
@@ -76,13 +78,19 @@ interface INavigationBar {
 const NavigationBar: React.FC<INavigationBar> = (props) => {
     const [ showDraw, setShowDraw ] = useState<boolean>(false);
 
+    const [ drawType, setDrawType ] = useState<NavigatorType>('None');
+
+    const closeDraw = () => {
+        setDrawType('None');
+    };
+
     return (
         <Layout>
             <InnerLayout>
                 <LogoImage src={Logo} />
-                <DrawTitle onClick={() => {setShowDraw(prev => !prev)}}>레고 제품 쇼핑</DrawTitle>
-                <DrawTitle onClick={() => {setShowDraw(prev => !prev)}}>레고 브랜드 소개</DrawTitle>
-                <DrawTitle onClick={() => {setShowDraw(prev => !prev)}}>고객 지원</DrawTitle>
+                <DrawTitle onClick={() => setDrawType('Shopping')}>레고 제품 쇼핑</DrawTitle>
+                <DrawTitle onClick={() => setDrawType('Introduce')}>레고 브랜드 소개</DrawTitle>
+                <DrawTitle onClick={() => setDrawType('Support')}>고객 지원</DrawTitle>
             </InnerLayout>
             <InnerLayout>
                 <MagnifierWrapper>
@@ -91,11 +99,11 @@ const NavigationBar: React.FC<INavigationBar> = (props) => {
                 <HeartImage src={Heart}/>
                 <ShoppingBagImage src={ShoppingBag}/>
             </InnerLayout>
-            { showDraw && (
+            { drawType !== 'None' && (
                 <NavigationDrawBar
-                    visible={showDraw}
-                    onClickBlur={() => setShowDraw(false)}
-                    onClickClose={() => setShowDraw(false)}
+                    visible={true}
+                    onClickBlur={closeDraw}
+                    onClickClose={closeDraw}
                 />
             )}
         </Layout>
