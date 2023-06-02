@@ -32,6 +32,13 @@ margin-left: 40px;
 :hover {
     cursor: pointer;
 }
+/* Disable drag option */
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 `;
 
 const MagnifierWrapper = styled(View)`
@@ -76,8 +83,6 @@ interface INavigationBar {
 }
 
 const NavigationBar: React.FC<INavigationBar> = (props) => {
-    const [ showDraw, setShowDraw ] = useState<boolean>(false);
-
     const [ drawType, setDrawType ] = useState<NavigatorType>('None');
 
     const closeDraw = () => {
@@ -101,7 +106,14 @@ const NavigationBar: React.FC<INavigationBar> = (props) => {
             </InnerLayout>
             { drawType !== 'None' && (
                 <NavigationDrawBar
-                    visible={true}
+                    value={drawType}
+                    onClickTitle={(value) => {
+                        if (value === drawType) {
+                            closeDraw();
+                            return;
+                        }
+                        setDrawType(value);
+                    }}
                     onClickBlur={closeDraw}
                     onClickClose={closeDraw}
                 />
