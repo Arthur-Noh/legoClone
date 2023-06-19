@@ -6,6 +6,7 @@ import Magnifier from '../../../assets/common/magnifier.svg';
 import Heart from '../../../assets/common/heart.svg';
 import ShoppingBag from '../../../assets/common/shoppingBag.svg';
 import NavigationDrawBar from './navigationDrawBar';
+import globalFonts from '../../../theme/style/globalFonts';
 
 const Layout = styled(View)`
 flex-direction: row;
@@ -14,6 +15,11 @@ background-color: ${({ theme }) => theme.colors.gray.base};
 align-items: center;
 justify-content: space-between;
 padding: ${({ theme }) => theme.base.templatePadding}px;
+`;
+
+const Text = styled(View)`
+font-size: ${({ theme }) => theme.typography.size.m1}px;
+font-family: ${globalFonts.NanumR};
 `;
 
 const LogoImage = styled.img`
@@ -91,6 +97,10 @@ const NavigationBar: React.FC<INavigationBar> = (props) => {
 
     return (
         <Layout>
+            <Text>
+                이얍이얍
+            </Text>
+            {/*
             <InnerLayout>
                 <LogoImage src={Logo} />
                 <DrawTitle onClick={() => setDrawType('Shopping')}>레고 제품 쇼핑</DrawTitle>
@@ -118,6 +128,7 @@ const NavigationBar: React.FC<INavigationBar> = (props) => {
                     onClickClose={closeDraw}
                 />
             )}
+            */}
         </Layout>
     );
 };
