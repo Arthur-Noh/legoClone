@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import View from '../../atoms/view';
-import Logo from '../../../assets/common/logo.svg';
-import Magnifier from '../../../assets/common/magnifier.svg';
-import Heart from '../../../assets/common/heart.svg';
-import ShoppingBag from '../../../assets/common/shoppingBag.svg';
-import NavigationDrawBar from './navigationDrawBar';
+import Text from '../../atoms/text';
+import { observer } from 'mobx-react';
 import globalFonts from '../../../theme/style/globalFonts';
+import Menu from '../../../assets/navigationBar/menu.png';
+import { scaler } from '../../../helper/scaler';
+import Pressable from '../../atoms/pressable';
+import navigationBarStore from '../../../stores/navigationBar/store';
+import Draw from './draw';
 
 const Layout = styled(View)`
 flex-direction: row;
@@ -17,89 +19,60 @@ justify-content: space-between;
 padding: ${({ theme }) => theme.base.templatePadding}px;
 `;
 
-const Text = styled(View)`
-font-size: ${({ theme }) => theme.typography.size.m1}px;
-font-family: ${globalFonts.NanumR};
+const Left = styled(View)`
 `;
 
-const LogoImage = styled.img`
-width: 30px;
-height: 30px;
+const Center = styled(View)`
 `;
 
-const InnerLayout = styled(View)`
-flex-direction: row;
-align-items: center;
+const Right = styled(View)`
 `;
 
-const DrawTitle = styled(View)`
-font-size: ${({ theme }) => theme.typography.size.m1}px;
-margin-left: 40px;
-:hover {
-    cursor: pointer;
-}
-/* Disable drag option */
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+const Header = styled(Text)`
+font-family: ${globalFonts.NanumEB};
+font-size: ${({ theme }) => theme.typography.size.l1}px;
 `;
 
-const MagnifierWrapper = styled(View)`
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 5px;
-background-color: ${({ theme }) => theme.colors.white.base};
-border-radius: 200px;
-`;
-
-const MagnifierImage = styled.img`
-width: 20px;
-height: 20px;
+const MenuImage = styled.img`
+width: ${scaler(20)}px;
+height: ${scaler(15)}px;
 :hover {
     cursor: pointer;
 }
 `;
-
-const HeartImage = styled.img`
-margin-left: 20px;
-width: 20px;
-height: 20px;
-:hover {
-    cursor: pointer;
-}
-`;
-
-const ShoppingBagImage = styled.img`
-margin-left: 10px;
-width: 20px;
-height: 20px;
-:hover {
-    cursor: pointer;
-}
-`;
-
-export type NavigatorType = 'Shopping' | 'Introduce' | 'Support' | 'None';
 
 interface INavigationBar {
 
 }
 
-const NavigationBar: React.FC<INavigationBar> = (props) => {
-    const [ drawType, setDrawType ] = useState<NavigatorType>('None');
-
-    const closeDraw = () => {
-        setDrawType('None');
-    };
+const NavigationBar: React.FC<INavigationBar> = observer((props) => {
 
     return (
         <Layout>
-            <Text>
-                이얍이얍
-            </Text>
+            <Left></Left>
+            <Center>
+                <Header>Arthur Noh</Header>
+            </Center>
+            <Right>
+                <Pressable
+                    onClick={() => {
+                        navigationBarStore.setVisible(!navigationBarStore.visible);
+                    }}
+                >
+                    <MenuImage src={Menu} />
+                </Pressable>
+            </Right>
+            { navigationBarStore.visible && (
+                <Draw
+                    visible={navigationBarStore.visible}
+                    onClickBlur={() => {
+                        navigationBarStore.setVisible(!navigationBarStore.visible);
+                    }}
+                    onClickMenu={(value) => {
+                        console.log(value);
+                    }}
+                />
+            )}
             {/*
             <InnerLayout>
                 <LogoImage src={Logo} />
@@ -131,6 +104,6 @@ const NavigationBar: React.FC<INavigationBar> = (props) => {
             */}
         </Layout>
     );
-};
+});
 
 export default NavigationBar;

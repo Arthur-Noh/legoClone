@@ -1,18 +1,25 @@
-# Clone project - Lego
-
-This project is clone web for learning.\
-The official link is [Official LEGO](https://www.lego.com/ko-kr).
+# Portfolio Web
+This project is portfolio(Arthur-Noh).\
 
 ## Available Scripts
-### `yarn start`
+### Local test > `yarn start`
+```
+local > yarn start
+localhost:3000 now connecting
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Server build > `yarn build`
+```
+local > ssh -i 'your key.pem' 'host@ip-address'
+server > git pull --rebase (아이디, 비밀번호는 잘 입력하도록)
+server > yarn build
+server > pm2 start server.js (maybe server already running)
+```
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### If you can't "yarn build" (reboot server)
+```
+server > pm2 monit (서버 상태 확인하기)
+server > pm2 kill
+server > yarn build
+server > pm2 start server.js
+```

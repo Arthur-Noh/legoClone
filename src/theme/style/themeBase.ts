@@ -18,8 +18,8 @@ const base = {
     smallComponentPadding: scaler(12),
     mediumComponentPadding: scaler(18),
     largeComponentPadding: scaler(24),
-    smallRadius: scaler( 4),
-    mediumRadius: scaler( 8),
+    smallRadius: scaler(4),
+    mediumRadius: scaler(8),
     largeRadius: scaler(12),
 };
 

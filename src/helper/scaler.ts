@@ -1,5 +1,9 @@
+export const mobileDimension = {
+    width: 768,
+}
+
 const basicDimension = {
-    width: 375,
+    width: 418,
     height: 812,
 };
 
@@ -9,6 +13,9 @@ const deviceDimensions = {
 };
 
 export const scaler = (size: number) => {
+    if (deviceDimensions.width > mobileDimension.width) {
+        return size;
+    }
     const scale = deviceDimensions.width / basicDimension.width;
     return Math.round(size * scale);
 };
