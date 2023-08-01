@@ -1,5 +1,5 @@
 # Portfolio Web
-This project is portfolio(Arthur-Noh).\
+This project is portfolio(Arthur-Noh).
 
 ## Available Scripts
 ### Local test > `yarn start`

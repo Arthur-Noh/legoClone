@@ -73,35 +73,6 @@ const NavigationBar: React.FC<INavigationBar> = observer((props) => {
                     }}
                 />
             )}
-            {/*
-            <InnerLayout>
-                <LogoImage src={Logo} />
-                <DrawTitle onClick={() => setDrawType('Shopping')}>레고 제품 쇼핑</DrawTitle>
-                <DrawTitle onClick={() => setDrawType('Introduce')}>레고 브랜드 소개</DrawTitle>
-                <DrawTitle onClick={() => setDrawType('Support')}>고객 지원</DrawTitle>
-            </InnerLayout>
-            <InnerLayout>
-                <MagnifierWrapper>
-                    <MagnifierImage src={Magnifier}/>
-                </MagnifierWrapper>
-                <HeartImage src={Heart}/>
-                <ShoppingBagImage src={ShoppingBag}/>
-            </InnerLayout>
-            { drawType !== 'None' && (
-                <NavigationDrawBar
-                    value={drawType}
-                    onClickTitle={(value) => {
-                        if (value === drawType) {
-                            closeDraw();
-                            return;
-                        }
-                        setDrawType(value);
-                    }}
-                    onClickBlur={closeDraw}
-                    onClickClose={closeDraw}
-                />
-            )}
-            */}
         </Layout>
     );
 });

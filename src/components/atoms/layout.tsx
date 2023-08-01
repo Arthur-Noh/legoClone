@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import View from "./view";
+import styled from 'styled-components';
+import View from './view';
 
 // Page layout
 const Layout = styled(View)`
